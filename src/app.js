@@ -16,22 +16,26 @@ const createPop = (arrayOfNumbers,itemToSearch) => {
   let currIndex=NEG_INF
   let check=false
 
-  arrayOfNumbers.forEach((element, index) => {
-    if (element === itemToSearch) {
-      currIndex = index
-      check = true
-    }
-  })
-
-  if(check){
-    return function(){
-      return `The item is present and is at index ${currIndex}`
-  }}
-  else{
-    return function(){
-      return `The item is not present and is at index ${NEG_INF}`
+  const find = () =>{
+    arrayOfNumbers.forEach((element, index) => {
+      if (element === itemToSearch) {
+        currIndex = index
+        check = true
+      }
+    })
+  
+    if(check){
+      return function(){
+        return `The item is present and is at index ${currIndex}`
+    }}
+    else{
+      return function(){
+        return `The item is not present and is at index ${NEG_INF}`
+      }
     }
   }
+
+  return find()
 }
 
 
